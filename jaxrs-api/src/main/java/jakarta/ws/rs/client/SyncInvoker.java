@@ -35,7 +35,7 @@ public interface SyncInvoker {
      * Invoke HTTP GET method for the current request synchronously.
      *
      * @return invocation response.
-     * @throws jakarta.ws.rs.ProcessingException in case the invocation processing has failed.
+     * @throws ProcessingException in case the invocation processing has failed.
      */
     Response get();
 
@@ -49,8 +49,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T get(Class<T> responseType);
 
@@ -64,8 +64,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}
      */
     <T> T get(GenericType<T> responseType);
 
@@ -97,8 +97,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T put(Entity<?> entity, Class<T> responseType);
 
@@ -115,10 +115,17 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T put(Entity<?> entity, GenericType<T> responseType);
+
+    /**
+     * Invoke HTTP PUT method for the current request synchronously.
+     *
+     * @return event emitter.
+     */
+    EntityEventEmitter put();
 
     // POST
 
@@ -148,8 +155,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T post(Entity<?> entity, Class<T> responseType);
 
@@ -166,10 +173,17 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T post(Entity<?> entity, GenericType<T> responseType);
+
+    /**
+     * Invoke HTTP POST method for the current request synchronously.
+     *
+     * @return event emitter.
+     */
+    EntityEventEmitter post();
 
     // DELETE
 
@@ -193,8 +207,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T delete(Class<T> responseType);
 
@@ -208,8 +222,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T delete(GenericType<T> responseType);
 
@@ -247,8 +261,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T options(Class<T> responseType);
 
@@ -262,8 +276,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T options(GenericType<T> responseType);
 
@@ -289,8 +303,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T trace(Class<T> responseType);
 
@@ -304,8 +318,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T trace(GenericType<T> responseType);
 
@@ -333,8 +347,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T method(String name, Class<T> responseType);
 
@@ -349,8 +363,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T method(String name, GenericType<T> responseType);
 
@@ -382,8 +396,8 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
-     * {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified response type is not
+     * {@link Response}.
      */
     <T> T method(String name, Entity<?> entity, Class<T> responseType);
 
@@ -401,8 +415,18 @@ public interface SyncInvoker {
      * conversion of the response entity data to an instance of a particular Java type).
      * @throws ProcessingException in case the request processing or subsequent I/O operation fails.
      * @throws WebApplicationException in case the response status code of the response returned by the server is not
-     * {@link jakarta.ws.rs.core.Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
-     * not represent {@link jakarta.ws.rs.core.Response}.
+     * {@link Response.Status.Family#SUCCESSFUL successful} and the specified generic response type does
+     * not represent {@link Response}.
      */
     <T> T method(String name, Entity<?> entity, GenericType<T> responseType);
+
+    /**
+     * Invoke an arbitrary method for the current request synchronously. Returns an event emitter to publish events to
+     * the request.
+     *
+     * @param name method name.
+     * @return event emitter.
+     */
+    EntityEventEmitter methodWithEntity(String name);
+
 }
